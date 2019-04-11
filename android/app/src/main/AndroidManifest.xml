@@ -10,6 +10,8 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="ice_cream_stores_demo"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCoucUIQKnS-TaKW7cHVT9Gz2vdqR6FKTA"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

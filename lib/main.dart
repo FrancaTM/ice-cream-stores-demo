@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() => runApp(MyApp());
 
@@ -56,7 +57,21 @@ class _HomePageState extends State<HomePage> {
             return Center(child: const Text('Loading...'));
           }
 
-          return StoreList(documents: snapshot.data.documents);
+          return Column(
+            children: <Widget>[
+              Flexible(
+                flex: 2,
+                child: StoreMap(
+                  documents: snapshot.data.documents,
+                  initialPosition: const LatLng(37.7786, -122.4375),
+                ),
+              ),
+              Flexible(
+                flex: 3,
+                child: StoreList(documents: snapshot.data.documents),
+              ),
+            ],
+          );
         },
       ),
     );
@@ -82,6 +97,27 @@ class StoreList extends StatelessWidget {
           subtitle: Text(document['address']),
         );
       },
+    );
+  }
+}
+
+class StoreMap extends StatelessWidget {
+  const StoreMap({
+    Key key,
+    @required this.documents,
+    @required this.initialPosition,
+  }) : super(key: key);
+
+  final List<DocumentSnapshot> documents;
+  final LatLng initialPosition;
+
+  @override
+  Widget build(BuildContext context) {
+    return GoogleMap(
+      initialCameraPosition: CameraPosition(
+        target: initialPosition,
+        zoom: 12,
+      ),
     );
   }
 }

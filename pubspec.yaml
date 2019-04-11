@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
 
   cloud_firestore: ^0.9.13+1
+  google_maps_flutter: ^0.5.7
 
 dev_dependencies:
   flutter_test:
