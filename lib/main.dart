@@ -56,19 +56,32 @@ class _HomePageState extends State<HomePage> {
             return Center(child: const Text('Loading...'));
           }
 
-          final documents = snapshot.data.documents;
-          return ListView.builder(
-            itemCount: documents.length,
-            itemBuilder: (builder, index) {
-              final document = documents[index];
-              return ListTile(
-                title: Text(document['name']),
-                subtitle: Text(document['address']),
-              );
-            },
-          );
+          return StoreList(documents: snapshot.data.documents);
         },
       ),
+    );
+  }
+}
+
+class StoreList extends StatelessWidget {
+  const StoreList({
+    Key key,
+    @required this.documents,
+  }) : super(key: key);
+
+  final List<DocumentSnapshot> documents;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: documents.length,
+      itemBuilder: (builder, index) {
+        final document = documents[index];
+        return ListTile(
+          title: Text(document['name']),
+          subtitle: Text(document['address']),
+        );
+      },
     );
   }
 }
