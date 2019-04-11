@@ -56,20 +56,16 @@ class _HomePageState extends State<HomePage> {
             return Center(child: const Text('Loading...'));
           }
 
-          final storesCount = snapshot.data.documents.length;
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'We have $storesCount ice cream stores',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                  ),
-                ),
-              ],
-            ),
+          final documents = snapshot.data.documents;
+          return ListView.builder(
+            itemCount: documents.length,
+            itemBuilder: (builder, index) {
+              final document = documents[index];
+              return ListTile(
+                title: Text(document['name']),
+                subtitle: Text(document['address']),
+              );
+            },
           );
         },
       ),
