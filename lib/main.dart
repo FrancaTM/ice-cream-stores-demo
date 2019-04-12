@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -31,6 +33,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Stream<QuerySnapshot> _iceCreamStores;
+  final Completer<GoogleMapController> _mapController = Completer();
 
   @override
   void initState() {
@@ -64,11 +67,15 @@ class _HomePageState extends State<HomePage> {
                 child: StoreMap(
                   documents: snapshot.data.documents,
                   initialPosition: const LatLng(37.7786, -122.4375),
+                  mapController: _mapController,
                 ),
               ),
               Flexible(
                 flex: 3,
-                child: StoreList(documents: snapshot.data.documents),
+                child: StoreList(
+                  documents: snapshot.data.documents,
+                  mapController: _mapController,
+                ),
               ),
             ],
           );
@@ -82,9 +89,11 @@ class StoreList extends StatelessWidget {
   const StoreList({
     Key key,
     @required this.documents,
+    @required this.mapController,
   }) : super(key: key);
 
   final List<DocumentSnapshot> documents;
+  final Completer<GoogleMapController> mapController;
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +104,20 @@ class StoreList extends StatelessWidget {
         return ListTile(
           title: Text(document['name']),
           subtitle: Text(document['address']),
+          onTap: () async {
+            final controller = await mapController.future;
+            await controller.animateCamera(
+              CameraUpdate.newCameraPosition(
+                CameraPosition(
+                  target: LatLng(
+                    document['location'].latitude,
+                    document['location'].longitude,
+                  ),
+                  zoom: 16,
+                ),
+              ),
+            );
+          },
         );
       },
     );
@@ -108,10 +131,12 @@ class StoreMap extends StatelessWidget {
     Key key,
     @required this.documents,
     @required this.initialPosition,
+    @required this.mapController,
   }) : super(key: key);
 
   final List<DocumentSnapshot> documents;
   final LatLng initialPosition;
+  final Completer<GoogleMapController> mapController;
 
   @override
   Widget build(BuildContext context) {
@@ -134,6 +159,9 @@ class StoreMap extends StatelessWidget {
                 ),
               ))
           .toSet(),
+      onMapCreated: (mapController) {
+        this.mapController.complete(mapController);
+      },
     );
   }
 }
