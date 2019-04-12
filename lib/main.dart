@@ -101,6 +101,8 @@ class StoreList extends StatelessWidget {
   }
 }
 
+const _pinkHue = 350.0;
+
 class StoreMap extends StatelessWidget {
   const StoreMap({
     Key key,
@@ -118,6 +120,20 @@ class StoreMap extends StatelessWidget {
         target: initialPosition,
         zoom: 12,
       ),
+      markers: documents
+          .map((document) => Marker(
+                markerId: MarkerId(document['placeId']),
+                icon: BitmapDescriptor.defaultMarkerWithHue(_pinkHue),
+                position: LatLng(
+                  document['location'].latitude,
+                  document['location'].longitude,
+                ),
+                infoWindow: InfoWindow(
+                  title: document['name'],
+                  snippet: document['address'],
+                ),
+              ))
+          .toSet(),
     );
   }
 }
