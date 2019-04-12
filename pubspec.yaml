@@ -26,6 +26,7 @@ dependencies:
 
   cloud_firestore: ^0.9.13+1
   google_maps_flutter: ^0.5.7
+  google_maps_webservice: ^0.0.13
 
 dev_dependencies:
   flutter_test:
