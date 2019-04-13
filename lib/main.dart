@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_webservice/places.dart';
+import 'api_key.dart';
 
 void main() => runApp(MyApp());
 
@@ -139,9 +140,7 @@ class StoreListTile extends StatefulWidget {
   }
 }
 
-// final _placesApiClient = GoogleMapsPlaces(apiKey: googleMapsApiKey);
-final _placesApiClient =
-    GoogleMapsPlaces(apiKey: "AIzaSyDBbuiD1Cd4Yg-2ndMJY4ZFaCxZuxUIwxs");
+final _placesApiClient = GoogleMapsPlaces(apiKey: googleMapsApiKey);
 
 class _StoreListTileState extends State<StoreListTile> {
   String _placePhotoUrl = '';
