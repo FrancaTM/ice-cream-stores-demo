@@ -1,16 +1,17 @@
 # ice_cream_stores_demo
 
-A new Flutter project.
+Demo based on - [Build Mobile Apps With Flutter and Google Maps](https://www.youtube.com/watch?time_continue=1&v=RpQLFAFqMlw) (Cloud Next '19)
 
-## Getting Started
+## Important steps to run the project
+#1 - Add api key for google maps services
 
-This project is a starting point for a Flutter application.
+You'll need to enable google maps services in a google cloud platform project and create an api key to access the services. After that, you'll have to insert your api key in 3 files inside the project (just serch for "api_key_here"). The files are:
+- "api_key.dart"
+- "ApiKey.m"
+- "AndroidManifest.xml"
+               
+#2 - Replicate the cloud firestore database
 
-A few resources to get you started if this is your first Flutter project:
+You'll have to replicate the database and data within Firebase's Cloud Firestore. Cloud Firestore is pretty straightforward and you won't have a hard time replicating the database shown in the demo on youtube, I guess :)
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+I hope this helps!
