@@ -1,40 +1,5 @@
 {
-  "project_info": {
-    "project_number": "197437570237",
-    "firebase_url": "https://ice-cream-stores-demo.firebaseio.com",
-    "project_id": "ice-cream-stores-demo",
-    "storage_bucket": "ice-cream-stores-demo.appspot.com"
-  },
-  "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:197437570237:android:e2f90483dec86ac0",
-        "android_client_info": {
-          "package_name": "com.example.ice_cream_stores_demo"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "197437570237-fev1206cmj7mgajg8da66a3q0ng7h2ne.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDxzNnSfi61g-W9jdxHtv-Q5k0ds-at6b8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "197437570237-fev1206cmj7mgajg8da66a3q0ng7h2ne.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    }
-  ],
-  "configuration_version": "1"
+  "placeholder": {
+    "placeholder": "placeholder"
+  }
 }

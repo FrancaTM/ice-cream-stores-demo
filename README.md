@@ -10,9 +10,9 @@ You'll need to enable google maps services in a google cloud platform project an
 - "ApiKey.m"
 - "AndroidManifest.xml"
                
-### 2 - Replicate the cloud firestore database
+### 2 - Create a firebase project and replicate the cloud firestore database
 
-You'll have to replicate the database and data within Firebase's Cloud Firestore. Cloud Firestore is pretty straightforward and you won't have a hard time replicating the database shown in the demo on youtube, I guess :)
+You'll have to create a new firebase project and add apps for android and iOS. After that replace "google-services.json" (android) and "GoogleService-Info.plist" (iOS) files and replicate the database and data within Firebase's Cloud Firestore. Cloud Firestore is pretty straightforward and you won't have a hard time replicating the database shown in the demo on youtube, I guess :)
 
 Just in case, here's a screenshot shot of my sample Firestore database:
 
